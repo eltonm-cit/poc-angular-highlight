@@ -1,0 +1,14 @@
+<div class="container-fluid container-demo">
+<div mwlTextInputHighlightContainer>
+    <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea (input)="addTags()">
+    </textarea>
+    <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
+        (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
+        (tagClick)="tagClicked = $event.tag">
+    </mwl-text-input-highlight>
+</div>
+<br>
+<div class="alert alert-info" *ngIf="tagClicked">
+    Tag clicked! {{ tagClicked.data }}
+</div>
+</div>
