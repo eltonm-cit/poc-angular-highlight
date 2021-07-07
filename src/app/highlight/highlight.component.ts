@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HighlightTag } from 'angular-text-input-highlight';
-import { groupBy, uniqBy } from 'lodash';
-import { HighlightResponse } from './highlight-response.interface';
+import { Dictionary, groupBy, uniqBy } from 'lodash';
+import { HighlightResponse, HighlightType } from './highlight-response.interface';
 import { HighlightService } from './highlight.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class HighlightComponent implements OnInit {
   tags: HighlightTag[] = [];
   tagClicked: HighlightTag | undefined;
 
-  constructor(private highlightService: HighlightService, private cdr: ChangeDetectorRef) { }
+  constructor(private highlightService: HighlightService) { }
 
   ngOnInit(): void {
     this.addTags();
@@ -28,47 +28,37 @@ export class HighlightComponent implements OnInit {
       let tags: HighlightTag[] = []
       let highlights: HighlightResponse[] = await this.highlightService.getHighlights(this.text).toPromise()
 
-      let groupedHighlights =
+      let groupedHighlights: Dictionary<HighlightResponse[]> =
         groupBy(highlights, (highlight) => highlight.type)
 
-      if (groupedHighlights.PRODUCT) {
-        uniqBy(groupedHighlights.PRODUCT, (highlight) => highlight.word)
-          .forEach((highlight) => {
-            Array.from(this.text.matchAll(new RegExp(highlight.word, 'g')))
-              .map(match => match.index as number)
-              .forEach(index => {
-                tags.push({
-                  indices: {
-                    start: index,
-                    end: index + highlight.word.length
-                  },
-                  data: highlight.word
-                });
-              })
-          })
-      }
-
-      if (groupedHighlights.ITEM) {
-        uniqBy(groupedHighlights.ITEM, (highlight) => highlight.word)
-          .forEach((highlight) => {
-
-            Array.from(this.text.matchAll(new RegExp(highlight.word, 'g')))
-              .map(match => match.index as number)
-              .forEach(index => {
-                tags.push({
-                  indices: {
-                    start: index,
-                    end: index + highlight.word.length
-                  },
-                  cssClass: 'bg-pink',
-                  data: highlight.word
-                });
-              })
-          })
-      }
+      this.generateTags(groupedHighlights, tags, HighlightType.ACTION, 'bg-blue')
+      this.generateTags(groupedHighlights, tags, HighlightType.CUSTOM_CHARACTERISTIC, 'bg-pink')
+      this.generateTags(groupedHighlights, tags, HighlightType.DATABASE, 'bg-green')
+      this.generateTags(groupedHighlights, tags, HighlightType.VALUE, 'bg-grey')
+      this.generateTags(groupedHighlights, tags, HighlightType.CONDITION, 'bg-red')
 
       this.tags = tags
-      this.cdr.detectChanges()
+    }
+  }
+
+  private generateTags(groupedHighlights: Dictionary<HighlightResponse[]>, tags: HighlightTag[], type: HighlightType, cssClass: string): void {
+    if (groupedHighlights[type]) {
+      uniqBy(groupedHighlights[type], (highlight) => highlight.word)
+        .forEach((highlight) => {
+
+          Array.from(this.text.matchAll(new RegExp(highlight.word, 'g')))
+            .map(match => match.index as number)
+            .forEach(index => {
+              tags.push({
+                indices: {
+                  start: index,
+                  end: index + highlight.word.length
+                },
+                cssClass: cssClass,
+                data: highlight.word
+              });
+            })
+        })
     }
   }
 

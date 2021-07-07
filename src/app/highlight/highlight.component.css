@@ -1,16 +1,33 @@
 .bg-blue {
-    background-color: lightblue;
-  }
-  .bg-pink {
-    background-color: lightcoral;
-  }
-  .bg-blue-dark {
-    background-color: #86c5da;
-  }
-  .bg-pink-dark {
-    background-color: #eb5252;
-  }
-  
+  background-color: lightblue;
+}
+.bg-blue-dark {
+  background-color: #86c5da;
+}
+.bg-pink {
+  background-color: rgb(235, 117, 117);
+}
+.bg-pink-dark {
+  background-color: #eb5252;
+}
+.bg-green {
+  background-color: #42FF33;
+}
+.bg-green-dark {
+  background-color: #31B027;
+}
+.bg-grey {
+  background-color: #A8ACA7;
+}
+.bg-grey-dark {
+  background-color: #5D5F5D;
+}
+.bg-red {
+  background-color: #F84747;
+}
+.bg-red-dark {
+  background-color: #972C2C;
+}
   textarea {
     width: 500px;
   }
