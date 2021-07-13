@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BACKEND_BASE_PATH: "http://localhost:8083"
+  BACKEND_BASE_PATH: "http://localhost:8083",
+  ga: 'UA-202042169-1'
 };
 
 /*

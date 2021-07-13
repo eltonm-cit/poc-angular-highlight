@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  BACKEND_BASE_PATH: "http://localhost:8083"
+  BACKEND_BASE_PATH: "http://localhost:8083",
+  ga: 'tracking-code'
 };
