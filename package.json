@@ -22,6 +22,7 @@
     "@reactivex/rxjs": "^6.6.7",
     "angular-text-input-highlight": "^1.4.3",
     "lodash": "^4.17.21",
+    "ngx-google-analytics": "^11.2.1",
     "rxjs": "^6.6.7",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { GoogleAnalyticsService, NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { HighlightTag } from 'angular-text-input-highlight';
 import { Dictionary, groupBy, uniqBy } from 'lodash';
 import { HighlightResponse, HighlightType } from './highlight-response.interface';
@@ -16,7 +17,7 @@ export class HighlightComponent implements OnInit {
   tags: HighlightTag[] = [];
   tagClicked: HighlightTag | undefined;
 
-  constructor(private highlightService: HighlightService) { }
+  constructor(private highlightService: HighlightService, private $gaService: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
     this.addTags();
@@ -57,6 +58,7 @@ export class HighlightComponent implements OnInit {
                 cssClass: cssClass,
                 data: highlight.word
               });
+              this.$gaService.event('highlighted-Tags', highlight.word);
             })
         })
     }
