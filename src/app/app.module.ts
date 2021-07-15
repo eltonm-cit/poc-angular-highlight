@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightService } from './highlight/highlight.service';
 import { environment } from 'src/environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { environment } from 'src/environments/environment';
     TextInputHighlightModule,
     HttpClientModule,
     NgxGoogleAnalyticsModule.forRoot(environment.ga),
-    NgxGoogleAnalyticsRouterModule.forRoot({ include: [ '/highlight' ] })
+    NgxGoogleAnalyticsRouterModule.forRoot({ include: [ '/highlight' ] }),
+    NgbModule
   ],
   providers: [
     HighlightService,

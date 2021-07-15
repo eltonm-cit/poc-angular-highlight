@@ -1,12 +1,19 @@
 <header>
-  <p>Header content here</p>
+  <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #212121;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <span class="me-1">DialogFlow Highlight</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
 </header>
 
 <main>
-  <p>Main content here</p>
-  <router-outlet></router-outlet>
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
 </main>
-
-<footer>
-  <p>Footer content here</p>
-</footer>

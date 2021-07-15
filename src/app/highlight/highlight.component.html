@@ -1,14 +1,18 @@
-<div class="container-fluid container-demo">
-<div mwlTextInputHighlightContainer>
-    <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea (input)="addTags()">
-    </textarea>
-    <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
-        (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
-        (tagClick)="tagClicked = $event.tag">
-    </mwl-text-input-highlight>
-</div>
-<br>
-<div class="alert alert-info" *ngIf="tagClicked">
-    Tag clicked! {{ tagClicked.data }}
-</div>
+<div class="card mt-2">
+    <div class="card-body">
+        <h5 class="card-title">Write some phrase:</h5>       
+        <div mwlTextInputHighlightContainer>
+            <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea (input)="addTags()">
+            </textarea>
+            <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
+                (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
+                (tagClick)="tagClicked = $event.tag">
+            </mwl-text-input-highlight>
+        </div>
+        <button type="button" class="btn btn-success mt-2" (click)="addTags()">Send</button>
+        <br>
+        <div class="alert alert-info" *ngIf="tagClicked">
+            Tag clicked! {{ tagClicked.data }}
+        </div>
+    </div>
 </div>
