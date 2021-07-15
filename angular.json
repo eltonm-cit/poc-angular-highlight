@@ -7,6 +7,11 @@
   "newProjectRoot": "projects",
   "projects": {
     "poc-angular-highlight": {
+      "i18n": {
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1089016418955650597" datatype="html">
+        <source>Header content here</source>
+        <target>Header content here</traget>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title for Header Content</note>
+        <note priority="1" from="meaning">Header Content</note>
+      </trans-unit>
+      <trans-unit id="3732221064273567371" datatype="html">
+        <source>Main content here</source>
+        <target>Main content here</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Description for Main Content</note>
+        <note priority="1" from="meaning">Main Description</note>
+      </trans-unit>
+      <trans-unit id="4744447546908038876" datatype="html">
+        <source>Footer content here</source>
+        <target>Footer content here</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Title for Footer Content</note>
+        <note priority="1" from="meaning">Footer Content</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
