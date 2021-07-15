@@ -5,7 +5,7 @@ export interface HighlightResponse {
 
 export enum HighlightType {
     ACTION = "ACTION",
-    CUSTOM_CHARACTERISTIC = "CUSTOM_CHARACTERISTIC",
+    CUSTOMCHARACTERISTIC = "CUSTOMCHARACTERISTIC",
     DATABASE = "DATABASE",
     VALUE = "VALUE",
     CONDITION = "CONDITION"
