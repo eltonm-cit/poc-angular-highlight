@@ -1,14 +1,24 @@
-<div class="container-fluid container-demo">
-<div mwlTextInputHighlightContainer>
-    <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea (input)="addTags()">
-    </textarea>
-    <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
-        (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
-        (tagClick)="tagClicked = $event.tag">
-    </mwl-text-input-highlight>
-</div>
-<br>
 <div class="alert alert-info" *ngIf="tagClicked">
     Tag clicked! {{ tagClicked.data }}
 </div>
+<div class="card mt-2">
+    <div class="card-body">
+        <div class="row col-12">
+            <p>Example:</p>
+            <p class="text-secondary ml-2">
+                I want to change the name of my custom characteristic X_CONTAINERTYPE on my 
+                Total Pet Foods database called Mini-can which includes all items in Can that are under 30g
+            </p>
+        </div>
+        <h5 class="card-title">Write some phrase:</h5>       
+        <div mwlTextInputHighlightContainer>
+            <textarea mwlTextInputElement rows="6" class="form-control" [(ngModel)]="text" #textarea>
+            </textarea>
+            <mwl-text-input-highlight [tags]="tags" [tagCssClass]="'bg-blue'" [textInputElement]="textarea"
+                (tagMouseEnter)="addDarkClass($event.target)" (tagMouseLeave)="removeDarkClass($event.target)"
+                (tagClick)="tagClicked = $event.tag">
+            </mwl-text-input-highlight>
+        </div>
+        <button type="button" class="btn btn-success mt-2" (click)="addTags()">Send</button>
+    </div>
 </div>

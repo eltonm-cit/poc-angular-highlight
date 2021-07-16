@@ -20,33 +20,29 @@ export class HighlightComponent implements OnInit {
   constructor(private highlightService: HighlightService, private $gaService: GoogleAnalyticsService) { }
 
   ngOnInit(): void {
-    this.addTags();
   }
 
   async addTags() {
+    let tags: HighlightTag[] = []
+    let highlights: HighlightResponse[] = await this.highlightService.getHighlights(this.text).toPromise()
 
-    if (this.text[this.text.length - 1] === " ") {
-      let tags: HighlightTag[] = []
-      let highlights: HighlightResponse[] = await this.highlightService.getHighlights(this.text).toPromise()
+    let groupedHighlights: Dictionary<HighlightResponse[]> =
+      groupBy(highlights, (highlight) => highlight.type)
 
-      let groupedHighlights: Dictionary<HighlightResponse[]> =
-        groupBy(highlights, (highlight) => highlight.type)
+    this.generateTags(groupedHighlights, tags, HighlightType.ACTION, 'bg-blue')
+    this.generateTags(groupedHighlights, tags, HighlightType.CUSTOMCHARACTERISTIC, 'bg-pink')
+    this.generateTags(groupedHighlights, tags, HighlightType.DATABASE, 'bg-green')
+    this.generateTags(groupedHighlights, tags, HighlightType.VALUE, 'bg-grey')
+    this.generateTags(groupedHighlights, tags, HighlightType.CONDITION, 'bg-red')
 
-      this.generateTags(groupedHighlights, tags, HighlightType.ACTION, 'bg-blue')
-      this.generateTags(groupedHighlights, tags, HighlightType.CUSTOM_CHARACTERISTIC, 'bg-pink')
-      this.generateTags(groupedHighlights, tags, HighlightType.DATABASE, 'bg-green')
-      this.generateTags(groupedHighlights, tags, HighlightType.VALUE, 'bg-grey')
-      this.generateTags(groupedHighlights, tags, HighlightType.CONDITION, 'bg-red')
-
-      this.tags = tags
-    }
+    this.tags = tags    
   }
 
   private generateTags(groupedHighlights: Dictionary<HighlightResponse[]>, tags: HighlightTag[], type: HighlightType, cssClass: string): void {
     if (groupedHighlights[type]) {
       uniqBy(groupedHighlights[type], (highlight) => highlight.word)
+        .filter((highlight) => highlight.word != '')
         .forEach((highlight) => {
-
           Array.from(this.text.matchAll(new RegExp(highlight.word, 'g')))
             .map(match => match.index as number)
             .forEach(index => {
