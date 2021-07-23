@@ -1,0 +1,23 @@
+<div style="width: 100%; min-height: 480px;" class="message-col">
+    <ul class="list-group">
+        <li *ngFor="let message of filteredMessages" class="mt-1 list-group-item list-group-item-primary"
+        [style.background]="message.sender === userName ? 'rgba(80,150,220, 0.4)':'rgba(150,150,150, 0.3)'">
+            <div class="row m-0 p-0">
+                <p class="font-weight-bold m-0 p-0"> {{message.sender + ' :'}} </p>
+                <p class="m-0 p-0" > {{message.content}} </p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="form-group">
+            <input placeholder="New message"
+                class="form-control" 
+                [(ngModel)]="newMessage" 
+                [disabled]="userName == ''"
+                (keyup)="$event.keyCode == 13 ? sendMessage() : null">
+        </div>
+    </div>
+</div>
+
