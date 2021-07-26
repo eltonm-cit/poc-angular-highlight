@@ -32,6 +32,23 @@
         <note priority="1" from="description">Title for Footer Content</note>
         <note priority="1" from="meaning">Footer Content</note>
       </trans-unit>
+      <trans-unit id="2106749739275148200" datatype="html">
+        <source>POC Angular</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Title for Header Content</note>
+        <note priority="1" from="meaning">Header Content</note>
+      </trans-unit>
+      <trans-unit id="7708270344948043036" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ !connected ? &apos;Connect&apos; : &apos;Connected&apos; }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/chat/layout/login/login.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+        <note priority="1" from="description">Connect Button</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>
